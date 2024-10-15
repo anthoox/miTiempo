@@ -63,13 +63,41 @@ html {
 
 
 /* -------------- MAIN --------------*/
-
+main{
+    display: flex;
+    
+    padding: 5px;
+}
 section {
-    padding: 5px 10px;
+    width: 100%;    
 }
 
 /* DATA */
 .data{
-    padding: 30px 10px;
+    padding: 10px 5px;
     display: flex;
+    justify-content: space-between;
+}
+.data  div{
+    width: 50%;
+}
+.data__alert{
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;   
+}
+.data .alert-icon {
+    margin-left: 10px;
+    width: 40px;
+}
+
+.data .data__config {
+    display: flex;
+    justify-content: end;
+}
+.data .data__config i{
+    font-size: 30px;
+    cursor: pointer;
 }
