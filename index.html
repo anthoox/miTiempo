@@ -1,111 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Tiempo</title>
-    <link rel="stylesheet" href="/sources/styles/style.css" />
-    <link rel="stylesheet" href="/sources/styles/search.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Tiempo</title>
+  <link rel="stylesheet" href="/sources/styles/style.css" />
+  <link rel="stylesheet" href="/sources/styles/search.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <body>
-    <header class="header">
-      <h1 class="header__title">Mi tiempo</h1>
-      <div class="header__location">
-        <div class="location">
-          <h2 class="location__place">Madrid</h2>
-          <h3 class="location__datetime">16:28 13/10/2024</h3>
-        </div>
-        <div class="search">
-          <!-- From Uiverse.io by vnuny  -->
-          <div class="container">
-            <input checked="" class="checkbox search__input" type="checkbox" />
-            <div class="mainbox">
-              <div class="iconContainer">
-                <svg
-                  viewBox="0 0 512 512"
-                  height="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="search_icon"
-                >
-                  <path
-                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-                  ></path>
-                </svg>
-              </div>
-              <input class="search_input" placeholder="search" type="text" />
+  <link rel="stylesheet"
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="header__title">Mi tiempo</h1>
+    <div class="header__location">
+      <div class="location">
+        <h2 class="location__place">Madrid</h2>
+        <h3 class="location__datetime">16:28 13/10/2024</h3>
+      </div>
+      <div class="search">
+        <!-- From Uiverse.io by vnuny  -->
+        <div class="container">
+          <input checked="" class="checkbox search__input" type="checkbox" />
+          <div class="mainbox">
+            <div class="iconContainer">
+              <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon">
+                <path
+                  d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                </path>
+              </svg>
             </div>
+            <input class="search_input" placeholder="search" type="text" />
           </div>
         </div>
       </div>
-    </header>
-    <main>
-      <section class="data">
-        <div class="data__alert">
-          <img
-            class="alert-icon"
-            src="/sources/img/icons/alert.png"
-            alt="icono de alerta"
-          />
-          <span class="alert">Alerta de calor extremo. Alerta naranja</span>
+    </div>
+  </header>
+  <main>
+    <section class="data">
+      <div class="data__alert">
+        <img class="alert-icon" src="/sources/img/icons/alert.png" alt="icono de alerta" />
+        <span class="alert">Alerta de calor extremo. Alerta naranja</span>
+      </div>
+      <div class="data__config">
+        <i class="las la-bars"></i>
+      </div>
+    </section>
+    <section class="weather">
+      <div class="tiempo__icono">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="140px" height="140px">
+          <radialGradient id="w~INujfpQanMh___D7Au2a" cx="24" cy="24" r="22" gradientUnits="userSpaceOnUse">
+            <stop offset=".724" stop-color="#ffed54" />
+            <stop offset=".779" stop-color="#ffe649" />
+            <stop offset=".877" stop-color="#ffd22d" />
+            <stop offset="1" stop-color="#ffb300" />
+          </radialGradient>
+          <path fill="url(#w~INujfpQanMh___D7Au2a)"
+            d="M24,2l1.421,1.474c0.93,0.965,2.388,1.196,3.571,0.566l1.807-0.963l0.896,1.841	c0.586,1.205,1.902,1.876,3.222,1.641l2.016-0.357l0.283,2.028c0.185,1.328,1.229,2.371,2.557,2.557l2.028,0.283l-0.357,2.016	c-0.234,1.32,0.436,2.635,1.641,3.222l1.841,0.896l-0.963,1.807c-0.631,1.183-0.4,2.641,0.566,3.571L46,24l-1.474,1.421	c-0.965,0.93-1.196,2.388-0.566,3.571l0.963,1.807l-1.841,0.896c-1.205,0.586-1.876,1.902-1.641,3.222l0.357,2.016l-2.028,0.283	c-1.328,0.185-2.371,1.229-2.557,2.557l-0.283,2.028l-2.016-0.357c-1.32-0.234-2.635,0.436-3.222,1.641l-0.896,1.841l-1.807-0.963	c-1.183-0.631-2.641-0.4-3.571,0.566L24,46l-1.421-1.474c-0.93-0.965-2.388-1.196-3.571-0.566l-1.807,0.963l-0.896-1.841	c-0.586-1.205-1.902-1.876-3.222-1.641l-2.016,0.357l-0.283-2.028c-0.185-1.328-1.229-2.371-2.557-2.557l-2.028-0.283l0.357-2.016	c0.234-1.32-0.436-2.635-1.641-3.222l-1.841-0.896l0.963-1.807c0.631-1.183,0.4-2.641-0.566-3.571L2,24l1.474-1.421	c0.965-0.93,1.196-2.388,0.566-3.571l-0.963-1.807l1.841-0.896c1.205-0.586,1.876-1.902,1.641-3.222l-0.357-2.016l2.028-0.283	c1.328-0.185,2.371-1.229,2.557-2.557l0.283-2.028l2.016,0.357c1.32,0.234,2.635-0.436,3.222-1.641l0.896-1.841l1.807,0.963	c1.183,0.631,2.641,0.4,3.571-0.566L24,2z" />
+          <linearGradient id="w~INujfpQanMh___D7Au2b" x1="8.092" x2="35.996" y1="8.092" y2="35.996"
+            gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fed100" />
+            <stop offset="1" stop-color="#e36001" />
+          </linearGradient>
+          <path fill="url(#w~INujfpQanMh___D7Au2b)"
+            d="M24,7C14.611,7,7,14.611,7,24s7.611,17,17,17s17-7.611,17-17S33.389,7,24,7z" />
+        </svg>
+      </div>
+      <div class="tiempo__info">
+        <h2>30º/25º</h2>
+        <h3>Soleado</h3>
+      </div>
+    </section>
+    <section class="info">
+      <div class="info__data info__data--left">
+        <div>
+          Viento: 9,6km/h Noreste
         </div>
-        <div class="data__config">
-          <i class="las la-bars"></i>
+        <div>
+          UV: Débil 1
         </div>
-      </section>
-      <section class="tiempo">
-        <div class="tiempo__icono">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 48 48"
-            width="140px"
-            height="140px"
-          >
-            <radialGradient
-              id="w~INujfpQanMh___D7Au2a"
-              cx="24"
-              cy="24"
-              r="22"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset=".724" stop-color="#ffed54" />
-              <stop offset=".779" stop-color="#ffe649" />
-              <stop offset=".877" stop-color="#ffd22d" />
-              <stop offset="1" stop-color="#ffb300" />
-            </radialGradient>
-            <path
-              fill="url(#w~INujfpQanMh___D7Au2a)"
-              d="M24,2l1.421,1.474c0.93,0.965,2.388,1.196,3.571,0.566l1.807-0.963l0.896,1.841	c0.586,1.205,1.902,1.876,3.222,1.641l2.016-0.357l0.283,2.028c0.185,1.328,1.229,2.371,2.557,2.557l2.028,0.283l-0.357,2.016	c-0.234,1.32,0.436,2.635,1.641,3.222l1.841,0.896l-0.963,1.807c-0.631,1.183-0.4,2.641,0.566,3.571L46,24l-1.474,1.421	c-0.965,0.93-1.196,2.388-0.566,3.571l0.963,1.807l-1.841,0.896c-1.205,0.586-1.876,1.902-1.641,3.222l0.357,2.016l-2.028,0.283	c-1.328,0.185-2.371,1.229-2.557,2.557l-0.283,2.028l-2.016-0.357c-1.32-0.234-2.635,0.436-3.222,1.641l-0.896,1.841l-1.807-0.963	c-1.183-0.631-2.641-0.4-3.571,0.566L24,46l-1.421-1.474c-0.93-0.965-2.388-1.196-3.571-0.566l-1.807,0.963l-0.896-1.841	c-0.586-1.205-1.902-1.876-3.222-1.641l-2.016,0.357l-0.283-2.028c-0.185-1.328-1.229-2.371-2.557-2.557l-2.028-0.283l0.357-2.016	c0.234-1.32-0.436-2.635-1.641-3.222l-1.841-0.896l0.963-1.807c0.631-1.183,0.4-2.641-0.566-3.571L2,24l1.474-1.421	c0.965-0.93,1.196-2.388,0.566-3.571l-0.963-1.807l1.841-0.896c1.205-0.586,1.876-1.902,1.641-3.222l-0.357-2.016l2.028-0.283	c1.328-0.185,2.371-1.229,2.557-2.557l0.283-2.028l2.016,0.357c1.32,0.234,2.635-0.436,3.222-1.641l0.896-1.841l1.807,0.963	c1.183,0.631,2.641,0.4,3.571-0.566L24,2z"
-            />
-            <linearGradient
-              id="w~INujfpQanMh___D7Au2b"
-              x1="8.092"
-              x2="35.996"
-              y1="8.092"
-              y2="35.996"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0" stop-color="#fed100" />
-              <stop offset="1" stop-color="#e36001" />
-            </linearGradient>
-            <path
-              fill="url(#w~INujfpQanMh___D7Au2b)"
-              d="M24,7C14.611,7,7,14.611,7,24s7.611,17,17,17s17-7.611,17-17S33.389,7,24,7z"
-            />
-          </svg>
+        <div>
+          Puesta de sol: 19:49
         </div>
-        <div class="tiempo__info">
-          <h2>30º/25º</h2>
-          <h3>Soleado</h3>
+      </div>
+      <div class="info__data info__data--right">
+        <div>
+          Humedad: 50%
         </div>
-      </section>
-    </main>
+        <div>
+          Presión: 1014mbar
+        </div>
+        <div>
+          Amanecer: 05:45
+        </div>
+      </div>
+    </section>
+    <!-- <section class="day">
+      <h4 class="day__tittle">Pronostico 24 horas</h4>
 
-    <script src="/sources/scripts/script.js"></script>
-  </body>
+
+    </section> -->
+    <section class="day">
+      <div class="chart-container">
+        <canvas id="weatherChart"></canvas>
+        <div class="weather-info">
+          <div class="day-info">
+            <span class="temp-high">25º</span>
+            <span class="temp-low">17º</span>
+            <!-- <img class="weather-icon" src="icono1.png" alt="Domingo"> -->
+            <span class="wind-speed">9,6km/h</span>
+            <span class="day-name">Lun</span>
+          </div>
+          <div class="day-info">
+            <span class="temp-high">30º</span>
+            <span class="temp-low">20º</span>
+            <!-- <img class="weather-icon" src="icono2.png" alt="Lunes"> -->
+            <span class="wind-speed">9,6km/h</span>
+            <span class="day-name">Mar</span>
+          </div>
+          <div class="day-info">
+            <span class="temp-high">31º</span>
+            <span class="temp-low">20º</span>
+            <!-- <img class="weather-icon" src="icono3.png" alt="Martes"> -->
+            <span class="wind-speed">9,6km/h</span>
+            <span class="day-name">Mie</span>
+          </div>
+          <div class="day-info">
+            <span class="temp-high">29º</span>
+            <span class="temp-low">15º</span>
+            <!-- <img class="weather-icon" src="icono4.png" alt="Miércoles"> -->
+            <span class="wind-speed">9,6km/h</span>
+            <span class="day-name">Jue</span>
+          </div>
+          <div class="day-info">
+            <span class="temp-high">29º</span>
+            <span class="temp-low">15º</span>
+            <!-- <img class="weather-icon" src="icono5.png" alt="Jueves"> -->
+            <span class="wind-speed">9,6km/h</span>
+            <span class="day-name">Vie</span>
+          </div>
+          <div class="day-info">
+            <span class="temp-high">28º</span>
+            <span class="temp-low">10º</span>
+            <!-- <img class="weather-icon" src="icono5.png" alt="Jueves"> -->
+            <span class="wind-speed">9,6km/h</span>
+            <span class="day-name">Sab</span>
+          </div>
+          <div class="day-info">
+            <span class="temp-high">27º</span>
+            <span class="temp-low">12º</span>
+            <!-- <img class="weather-icon" src="icono5.png" alt="Jueves"> -->
+            <span class="wind-speed">9,6km/h</span>
+            <span class="day-name">Dom</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/sources/scripts/script.js"></script>
+  <script src="/sources/scripts/graficos.js"></script>
+
+</body>
+
 </html>
